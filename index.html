@@ -3,119 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>王天艺 | 个人主页 / Personal Homepage</title>
+  <title>王天艺 Wang Tianyi | 个人主页 / Personal Homepage</title>
   <style>
+    :root {
+      --mint:  #a8e6cf;
+      --mint-dark: #81c7b2;
+      --choco: #4e342e;
+      --choco-light: #72574b;
+      --white: #fff;
+      --shadow: 0 4px 18px rgba(130,180,160,0.14);
+      --transition: all .22s cubic-bezier(.4,0,.2,1);
+    }
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-      background: #f4f8fb;
+      background: linear-gradient(135deg, var(--mint), #e6fff9 60%);
       margin: 0;
-      padding: 0;
+      min-height: 100vh;
+      font-family: 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      transition: var(--transition);
+    }
+    .lang-switcher {
+      text-align: right;
+      padding: 18px 24px 0 0;
+    }
+    .lang-btn {
+      background: var(--choco);
+      color: var(--mint);
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      padding: 6px 20px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: var(--transition);
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--mint-dark);
+      color: var(--white);
     }
     .container {
-      max-width: 700px;
-      background: #fff;
-      margin: 42px auto 0 auto;
-      border-radius: 16px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.09);
-      padding: 36px 32px 24px 32px;
+      max-width: 680px;
+      margin: 22px auto;
+      padding: 12px;
     }
-    .header {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+    .module {
+      background: var(--white);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      margin: 28px 0;
+      padding: 30px 28px 20px 28px;
+      transition: var(--transition);
+      position: relative;
+      border: 4px solid var(--mint-dark);
     }
-    .avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 4px solid #f4f8fb;
-      margin-right: 32px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    .module:hover {
+      box-shadow: 0 8px 30px rgba(66,120,110,0.21);
+      border-color: var(--choco);
+      transform: translateY(-2px) scale(1.014);
     }
-    .info {
-      flex: 1;
-    }
-    .info h1 {
-      margin: 0 0 8px 0;
-      font-size: 2rem;
+    .mod-title {
+      font-size: 1.23rem;
+      color: var(--choco);
+      margin-bottom: 10px;
       font-weight: 700;
-      color: #303d50;
+      letter-spacing: 2px;
     }
-    .info p {
-      margin: 4px 0;
-      font-size: 1.15rem;
-      color: #596b7a;
+    .mod-content, .mod-edu-list, .mod-skill-list {
+      color: #38615c;
+      font-size: 1.07rem;
+      line-height: 1.9;
+      margin-bottom: 6px;
     }
-    .contact {
-      margin-top: 10px;
+    .mod-skill-list {
+      margin: 0; 
+      padding: 0;
+      list-style: none;
+      display: flex; 
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .mod-skill-list li {
+      background: var(--mint-dark);
+      color: var(--white);
       font-size: 1rem;
-      color: #546d7a;
+      border-radius: 3em;
+      padding: 4px 19px;
+      margin: 0;
+      transition: var(--transition);
+      cursor: pointer;
     }
-    .section-title {
-      font-size: 1.15rem;
-      color: #2577ca;
-      margin-top: 28px;
+    .mod-skill-list li:hover {
+      background: var(--choco-light);
+      color: #f7e8d5;
+      font-size: 1.06rem;
     }
-    .section-hr {
-      border: none;
-      border-top: 2px solid #c4d9ee;
-      margin: 6px 0 14px 0;
-    }
-    .skills, .edu {
-      font-size: 1.09rem;
-      color: #4b5e6a;
+    .mod-edu-list {
+      padding-left: 10px;
       margin: 6px 0 0 0;
     }
-    .last-update {
-      margin-top:26px;
-      color: #bbbbbc;
-      text-align: right;
-      font-size: 1rem;
+    .mod-contact-btn {
+      background: var(--choco);
+      color: var(--mint);
+      padding: 10px 26px;
+      border: none;
+      border-radius: 26px;
+      font-size: 1.04rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: var(--transition);
+      letter-spacing: 2px;
     }
-    @media (max-width: 750px) {
-      .container {padding: 18px 5px;}
-      .avatar {width: 68px; height: 68px;}
-      .info h1 {font-size: 1.3rem;}
+    .mod-contact-btn:hover {
+      background: var(--mint-dark);
+      color: var(--white);
+    }
+    .update-time {
+      color: #8eab9b;
+      font-size: 0.97rem;
+      text-align: right;
+      margin: 14px 0 8px 0;
+      letter-spacing: 1px;
+    }
+    @media (max-width:760px){
+      .container{padding:2px;}
+      .module{padding:13px 8px;}
     }
   </style>
 </head>
 <body>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+  </div>
   <div class="container">
-    <!-- 个���基本信息 / Basic Info -->
-    <div class="header">
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/your-github-id?v=4" alt="Avatar">
-      <div class="info">
-        <h1>王天艺&nbsp;|&nbsp;Wang Tianyi</h1>
-        <p>学校/School: 华东政法大学 (East China University of Political Science and Law)</p>
-        <p>专业/Major: 经济学 / Economics</p>
-        <div class="contact">联系方式/Contact: <a href="mailto:3085348625@qq.com">3085348625@qq.com</a></div>
+    <!-- 基本信息模块 Basic Info -->
+    <div class="module" id="mod-info">
+      <div class="mod-title" lang="zh">基本信息</div>
+      <div class="mod-title" lang="en" style="display:none;">Basic Information</div>
+      <div class="mod-content" lang="zh">
+        姓名：王天艺<br>
+        学校：华东政法大学<br>
+        专业：经济学
+      </div>
+      <div class="mod-content" lang="en" style="display:none;">
+        Name: Wang Tianyi<br>
+        School: East China University of Political Science and Law<br>
+        Major: Economics
       </div>
     </div>
-    
-    <!-- 个人简介 / About Me -->
-    <div class="section-title">个人简介 / About Me</div>
-    <hr class="section-hr">
-    <p class="skills">骄傲的沃尔玛购物袋<br>
-    A proud Walmart shopping bag</p>
-    
-    <!-- 技能 / Skills -->
-    <div class="section-title">技能 / Skills</div>
-    <hr class="section-hr">
-    <p class="skills">Python、数据分析、计量/统计、写作<br>
-      Python, Data Analysis, Econometrics/Statistics, Writing
-    </p>
 
-    
-    <!-- 教育经历 / Education -->
-    <div class="section-title">教育经历 / Education</div>
-    <hr class="section-hr">
-    <div class="edu">
-      华东政法大学 本科 2023.9-至今<br>
-      East China University of Political Science and Law, Bachelor's, Sep 2023 - Present
+    <!-- 个人简介模块 About -->
+    <div class="module" id="mod-about">
+      <div class="mod-title" lang="zh">个人简介</div>
+      <div class="mod-title" lang="en" style="display:none;">About</div>
+      <div class="mod-content" lang="zh">爱国爱党爱人民</div>
+      <div class="mod-content" lang="en" style="display:none;">A proud Walmart shopping bag</div>
     </div>
-    
-    <!-- 最后更新时间 / Last Update -->
-    <div class="last-update">最后更新日期 / Last updated: 2026/3/23</div>
+
+    <!-- 技能模块 Skills -->
+    <div class="module" id="mod-skills">
+      <div class="mod-title" lang="zh">技能</div>
+      <div class="mod-title" lang="en" style="display:none;">Skills</div>
+      <ul class="mod-skill-list" lang="zh">
+        <li onclick="alert('Python 是最流行的编程语言之一')">Python</li>
+        <li onclick="alert('数据分析是现代工作必备能力！')">数据分析</li>
+        <li onclick="alert('计量/统计可以帮你解决很多经济学问题哦')">计量/统计</li>
+        <li onclick="alert('写作是表达思想的艺术')">写作</li>
+      </ul>
+      <ul class="mod-skill-list" lang="en" style="display:none;">
+        <li onclick="alert('Python is one of the most popular programming languages')">Python</li>
+        <li onclick="alert('Data analysis is an essential skill in modern work!')">Data Analysis</li>
+        <li onclick="alert('Econometrics/Statistics help you solve various economic problems')">Econometrics/Statistics</li>
+        <li onclick="alert('Writing is the art of expressing ideas')">Writing</li>
+      </ul>
+    </div>
+
+    <!-- 教育经历模块 Education -->
+    <div class="module" id="mod-edu">
+      <div class="mod-title" lang="zh">教育经历</div>
+      <div class="mod-title" lang="en" style="display:none;">Education</div>
+      <div class="mod-edu-list" lang="zh">
+        华东政法大学 本科 2023.9-至今
+      </div>
+      <div class="mod-edu-list" lang="en" style="display:none;">
+        East China University of Political Science and Law, Bachelor's, Sep 2023 - Present
+      </div>
+    </div>
+
+    <!-- 联系方式 Contact -->
+    <div class="module" id="mod-contact" style="text-align:center;">
+      <div class="mod-title" lang="zh">联系方式</div>
+      <div class="mod-title" lang="en" style="display:none;">Contact</div>
+      <button class="mod-contact-btn" onclick="copyEmail()" lang="zh">复制邮箱</button>
+      <button class="mod-contact-btn" onclick="copyEmail()" lang="en" style="display:none;">Copy Email</button>
+      <div id="email-text" style="display:none;">3085348625@qq.com</div>
+    </div>
+
+    <div class="update-time">
+      <span lang="zh">最后更新日期：2026/3/23</span>
+      <span lang="en" style="display:none;">Last updated: 2026/3/23</span>
+    </div>
   </div>
+  <script>
+    function setLang(lang) {
+      // 切换按钮激活样式
+      document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
+      document.querySelectorAll('.lang-btn')[lang==='zh'?0:1].classList.add('active');
+      // 控制所有带lang的显示
+      document.querySelectorAll('[lang="zh"]').forEach(e=>e.style.display=(lang==='zh'?'':'none'));
+      document.querySelectorAll('[lang="en"]').forEach(e=>e.style.display=(lang==='en'?'':'none'));
+    }
+    function copyEmail() {
+      const email = "3085348625@qq.com";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(()=>{
+          alert('邮箱已复制到剪贴板！\nEmail copied to clipboard!');
+        });
+      } else {
+        var t = document.createElement("input");
+        t.value = email;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        document.body.removeChild(t);
+        alert('邮箱已复制到剪贴板！\nEmail copied to clipboard!');
+      }
+    }
+  </script>
 </body>
 </html>
